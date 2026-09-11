@@ -168,7 +168,7 @@ export default function HeroSection() {
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-[radial-gradient(circle,rgba(0,229,255,0.06)_0%,rgba(41,121,255,0.02)_40%,transparent_70%)] pointer-events-none" />
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060B14] via-transparent to-[#060B14] pointer-events-none z-[2]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#031224] via-transparent to-[#031224] pointer-events-none z-[2]" />
       <div className="absolute inset-0 grid-bg pointer-events-none opacity-40 z-[1]" />
       <div className="absolute inset-0 noise-overlay pointer-events-none z-[1]" />
 

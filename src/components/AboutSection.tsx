@@ -117,7 +117,7 @@ export default function AboutSection() {
                       <p className="text-[13px] text-[#7B8BA6]">{item.event}</p>
                     </div>
                   </div>
-                  <div className="relative z-10 w-3 h-3 rounded-full bg-[#060B14] border-2 border-[#00E5FF]/40 shrink-0" />
+                  <div className="relative z-10 w-3 h-3 rounded-full bg-[#031224] border-2 border-[#00E5FF]/40 shrink-0" />
                   <div className="flex-1" />
                 </motion.div>
               ))}

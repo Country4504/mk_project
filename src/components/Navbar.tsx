@@ -39,7 +39,7 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#060B14]/85 backdrop-blur-2xl border-b border-[rgba(0,229,255,0.06)]'
+          ? 'bg-[#102039]/88 backdrop-blur-2xl border-b border-[rgba(0,229,255,0.10)]'
           : 'bg-transparent'
       }`}
     >
@@ -99,7 +99,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden bg-[#060B14]/95 backdrop-blur-2xl border-b border-[rgba(0,229,255,0.06)]"
+            className="xl:hidden bg-[#102039]/95 backdrop-blur-2xl border-b border-[rgba(0,229,255,0.10)]"
           >
             <div className="px-6 py-4 space-y-0.5 max-h-[70vh] overflow-y-auto">
               {navItems.map((item) => (

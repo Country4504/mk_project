@@ -133,22 +133,14 @@ export default function CapabilitiesSection() {
             return (
               <AnimatedPanel key={i} delay={i * 0.08}>
                 <div
-                  className={`relative rounded-2xl p-6 transition-all duration-500 cursor-default border-glow-hover overflow-hidden ${
-                    isActive
-                      ? 'bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] shadow-[0_0_40px_rgba(0,229,255,0.06)]'
-                      : 'glass-card'
-                  }`}
+                  className="relative rounded-2xl p-6 transition-all duration-500 cursor-default border-glow-hover overflow-hidden bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] shadow-[0_0_40px_rgba(0,229,255,0.06)]"
                   onMouseEnter={() => setActiveIdx(i)}
                 >
                   <ScanLine />
 
                   {/* Top row */}
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-500 ${
-                      isActive
-                        ? 'bg-[rgba(0,229,255,0.15)] shadow-[0_0_20px_rgba(0,229,255,0.15)]'
-                        : 'bg-[rgba(0,229,255,0.08)]'
-                    }`}>
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-500 bg-[rgba(0,229,255,0.15)] shadow-[0_0_20px_rgba(0,229,255,0.15)]">
                       <Icon className="w-5 h-5 text-[#00E5FF]" />
                     </div>
                     <div className="flex items-center gap-1.5">
@@ -168,11 +160,7 @@ export default function CapabilitiesSection() {
                       {[...Array(4)].map((_, j) => (
                         <div
                           key={j}
-                          className={`w-1 rounded-full transition-all duration-500 ${
-                            j <= (isActive ? 3 : 2)
-                              ? 'h-3 bg-[#00E5FF]/60'
-                              : 'h-2 bg-[#7B8BA6]/20'
-                          }`}
+                          className="w-1 h-3 rounded-full transition-all duration-500 bg-[#00E5FF]/60"
                         />
                       ))}
                     </div>
