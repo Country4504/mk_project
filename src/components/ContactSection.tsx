@@ -123,7 +123,7 @@ export default function ContactSection() {
                     required
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.03)] border border-[rgba(0,229,255,0.08)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.25)] focus:shadow-[0_0_20px_rgba(0,229,255,0.05)] transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入公司名称"
                   />
                 </div>
@@ -137,7 +137,7 @@ export default function ContactSection() {
                     required
                     value={formData.contact}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.03)] border border-[rgba(0,229,255,0.08)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.25)] focus:shadow-[0_0_20px_rgba(0,229,255,0.05)] transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入姓名"
                   />
                 </div>
@@ -151,7 +151,7 @@ export default function ContactSection() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.03)] border border-[rgba(0,229,255,0.08)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.25)] focus:shadow-[0_0_20px_rgba(0,229,255,0.05)] transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入联系电话"
                   />
                 </div>
@@ -164,7 +164,7 @@ export default function ContactSection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.03)] border border-[rgba(0,229,255,0.08)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.25)] focus:shadow-[0_0_20px_rgba(0,229,255,0.05)] transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入邮箱地址"
                   />
                 </div>
@@ -178,15 +178,15 @@ export default function ContactSection() {
                   name="need"
                   value={formData.need}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.03)] border border-[rgba(0,229,255,0.08)] text-[14px] text-[#E8EDF5] focus:outline-none focus:border-[rgba(0,229,255,0.25)] focus:shadow-[0_0_20px_rgba(0,229,255,0.05)] transition-all duration-300 appearance-none"
+                  className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300 appearance-none"
                 >
-                  <option value="" className="bg-[#0C1424]">请选择需求类型</option>
-                  <option value="consulting" className="bg-[#0C1424]">安全咨询</option>
-                  <option value="solution" className="bg-[#0C1424]">解决方案</option>
-                  <option value="product" className="bg-[#0C1424]">产品采购</option>
-                  <option value="service" className="bg-[#0C1424]">安全运营</option>
-                  <option value="training" className="bg-[#0C1424]">培训服务</option>
-                  <option value="other" className="bg-[#0C1424]">其他</option>
+                  <option value="" className="bg-[#2A4A70]">请选择需求类型</option>
+                  <option value="consulting" className="bg-[#2A4A70]">安全咨询</option>
+                  <option value="solution" className="bg-[#2A4A70]">解决方案</option>
+                  <option value="product" className="bg-[#2A4A70]">产品采购</option>
+                  <option value="service" className="bg-[#2A4A70]">安全运营</option>
+                  <option value="training" className="bg-[#2A4A70]">培训服务</option>
+                  <option value="other" className="bg-[#2A4A70]">其他</option>
                 </select>
               </div>
 

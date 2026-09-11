@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" className="dark">
-      <body className="antialiased bg-[#060B14] text-[#E8EDF5]">
+      <body className="antialiased bg-[#031224] text-[#F2F7FF]">
         <Navbar />
         <main>{children}</main>
         <Footer />

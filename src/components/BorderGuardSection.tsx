@@ -72,9 +72,7 @@ function ProductCard({
   return (
     <div
       data-product-index={index}
-      className={`py-16 sm:py-20 px-6 sm:px-10 transition-all duration-500 ${
-        isActive ? 'opacity-100' : 'opacity-60'
-      }`}
+      className="py-16 sm:py-20 px-6 sm:px-10"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16 items-center">
         {/* 左侧视觉 */}
@@ -94,7 +92,7 @@ function ProductCard({
                 strokeWidth={1.5}
               />
             </div>
-            <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-[#060B14] border border-[rgba(0,229,255,0.25)] flex items-center justify-center">
+            <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-[#031224] border border-[rgba(0,229,255,0.25)] flex items-center justify-center">
               <span className="text-[10px] font-mono text-[#00E5FF]">
                 {String(index + 1).padStart(2, '0')}
               </span>
@@ -170,7 +168,7 @@ export default function BorderGuardSection() {
     <section
       id="border-guard"
       ref={sectionRef}
-      className="relative bg-[#060B14]"
+      className="relative bg-[#031224]"
     >
       {/* 背景网格 */}
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
