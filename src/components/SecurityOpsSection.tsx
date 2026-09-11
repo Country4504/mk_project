@@ -122,7 +122,6 @@ export default function SecurityOpsSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
@@ -144,7 +143,6 @@ export default function SecurityOpsSection() {
 
         {/* SOC Dashboard */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.7 }}
@@ -218,13 +216,9 @@ export default function SecurityOpsSection() {
                       <span className="text-[11px] font-mono" style={{ color: item.color }}>{item.level}%</span>
                     </div>
                     <div className="h-1 bg-[rgba(255,255,255,0.04)] rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${item.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                      <div
+                        style={{ width: `${item.level}%`, backgroundColor: item.color }}
                         className="h-full rounded-full"
-                        style={{ backgroundColor: item.color }}
                       />
                     </div>
                   </div>

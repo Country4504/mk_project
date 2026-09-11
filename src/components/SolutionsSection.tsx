@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import {
   Cloud,
@@ -115,7 +115,8 @@ export default function SolutionsSection() {
               return (
                 <motion.button
                   key={i}
-                  onClick={() => setActiveIdx(i)}
+                  onMouseEnter={() => setActiveIdx(i)}
+                  onFocus={() => setActiveIdx(i)}
                   className={`flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal min-w-fit lg:min-w-0 lg:w-full ${
                     isActive
                       ? 'bg-[rgba(0,229,255,0.06)] border border-[rgba(0,229,255,0.2)] shadow-[0_0_20px_rgba(0,229,255,0.05)]'
@@ -149,13 +150,11 @@ export default function SolutionsSection() {
 
           {/* Right: detail panel */}
           <div className="lg:col-span-8">
-            <AnimatePresence mode="wait">
+            <div>
               <motion.div
                 key={activeIdx}
-                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.2 }}
                 className="glass-card rounded-2xl p-6 lg:p-8 h-full relative overflow-hidden"
               >
                 {/* Scan line */}
@@ -206,7 +205,7 @@ export default function SolutionsSection() {
                   </svg>
                 </div>
               </motion.div>
-            </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>

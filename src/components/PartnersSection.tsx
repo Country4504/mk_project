@@ -25,7 +25,6 @@ export default function PartnersSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
@@ -51,7 +50,6 @@ export default function PartnersSection() {
           {partnerCategories.map((cat, ci) => (
             <motion.div
               key={ci}
-              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: ci * 0.1 }}
@@ -63,7 +61,6 @@ export default function PartnersSection() {
                 {cat.partners.map((partner, pi) => (
                   <motion.div
                     key={pi}
-                    initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: pi * 0.05 }}
