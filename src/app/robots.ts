@@ -9,3 +9,4 @@ export default function robots(): MetadataRoute.Robots {
     },
   };
 }
+export const dynamic = 'force-static'
