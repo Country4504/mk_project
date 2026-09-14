@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
 const navItems = [
@@ -14,6 +14,16 @@ const navItems = [
   { label: '合作伙伴', href: '#partners' },
   { label: '关于我们', href: '#about' },
   // { label: '联系我们', href: '#contact' },
+];
+
+const solutionItems = [
+  { label: '云安全解决方案', href: '#cloud-security' },
+  { label: '数据安全解决方案', href: '#data-security' },
+  { label: '应用安全解决方案', href: '#application-security' },
+  { label: '网络安全解决方案', href: '#network-security' },
+  { label: '终端安全解决方案', href: '#endpoint-security' },
+  { label: '运维安全解决方案', href: '#operations-security' },
+  { label: '移动安全解决方案', href: '#mobile-security' },
 ];
 
 export default function Navbar() {
@@ -71,15 +81,17 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden xl:flex items-center gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => { e.preventDefault(); handleClick(item.href); }}
-                className="px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg hover:bg-[rgba(0,229,255,0.08)]"
-              >
-                {item.label}
-              </a>
+            {navItems.map((item) => item.href === '/solutions' ? (
+              <div key={item.href} className="group relative">
+                <a href="/solutions" onClick={(e) => { e.preventDefault(); handleClick('/solutions'); }} className="flex items-center gap-1 px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg hover:bg-[rgba(0,229,255,0.08)]">
+                  {item.label}<ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                </a>
+                <div className="invisible absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 translate-y-2 rounded-xl bg-[#102039]/98 p-2 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,.35)] backdrop-blur-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  {solutionItems.map((subItem) => <a key={subItem.href} href={`/solutions${subItem.href}`} onClick={(e) => { e.preventDefault(); window.location.href = `/solutions${subItem.href}`; }} className="block rounded-lg px-3 py-2.5 text-sm text-[#AAB8CC] transition-colors hover:bg-[#00E5FF]/10 hover:text-[#00E5FF]">{subItem.label}</a>)}
+                </div>
+              </div>
+            ) : (
+              <a key={item.href} href={item.href} onClick={(e) => { e.preventDefault(); handleClick(item.href); }} className="px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg hover:bg-[rgba(0,229,255,0.08)]">{item.label}</a>
             ))}
             <a
               href="#contact"
@@ -110,15 +122,15 @@ export default function Navbar() {
             className="xl:hidden bg-[#102039]/95 backdrop-blur-2xl"
           >
             <div className="px-6 py-4 space-y-0.5 max-h-[70vh] overflow-y-auto">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => { e.preventDefault(); handleClick(item.href); }}
-                  className="block px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] hover:bg-[rgba(0,229,255,0.08)] rounded-lg transition-all"
-                >
-                  {item.label}
-                </a>
+              {navItems.map((item) => item.href === '/solutions' ? (
+                <div key={item.href}>
+                  <a href="/solutions" onClick={(e) => { e.preventDefault(); handleClick('/solutions'); }} className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:bg-[#00E5FF]/10 hover:text-[#00E5FF]">{item.label}<ChevronDown className="h-4 w-4" /></a>
+                  <div className="ml-4 border-l border-[#00E5FF]/15 pl-3">
+                    {solutionItems.map((subItem) => <a key={subItem.href} href={`/solutions${subItem.href}`} onClick={(e) => { e.preventDefault(); window.location.href = `/solutions${subItem.href}`; }} className="block px-3 py-2 text-sm text-[#7B8BA6] hover:text-[#00E5FF]">{subItem.label}</a>)}
+                  </div>
+                </div>
+              ) : (
+                <a key={item.href} href={item.href} onClick={(e) => { e.preventDefault(); handleClick(item.href); }} className="block rounded-lg px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:bg-[rgba(0,229,255,0.08)] hover:text-[#00E5FF]">{item.label}</a>
               ))}
             </div>
           </motion.div>
