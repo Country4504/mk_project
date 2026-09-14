@@ -2,7 +2,7 @@ import { Shield } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-[rgba(0,229,255,0.06)] bg-[#102039]">
+    <footer className="footer-light relative border-t border-[#D8E0E5] bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
@@ -54,8 +54,8 @@ export default function Footer() {
             <h4 className="text-[11px] font-mono text-[#00E5FF]/60 tracking-[0.15em] uppercase mb-4">公司信息</h4>
             <ul className="space-y-2">
               <li><span className="text-[13px] text-[#7B8BA6]">深圳市辉锐信息科技有限公司</span></li>
-              <li><span className="text-[13px] text-[#7B8BA6]">联系电话：待补充</span></li>
-              <li><span className="text-[13px] text-[#7B8BA6]">电子邮箱：待补充</span></li>
+              <li><span className="text-[13px] text-[#7B8BA6]">联系电话：18665355986</span></li>
+              <li><span className="text-[13px] text-[#7B8BA6]">电子邮箱：ganqihui@phaeray.com</span></li>
             </ul>
           </div>
         </div>

@@ -67,7 +67,7 @@ export default function ContactSection() {
                 </div>
                 <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">公司地址</span>
               </div>
-              <p className="text-[14px] text-[#E8EDF5]">深圳市</p>
+              <p className="text-[14px] text-[#E8EDF5]">广东省深圳市宝安区西乡华源科技创新园B座1区502</p>
               <p className="text-[13px] text-[#7B8BA6] mt-1">深圳市辉锐信息科技有限公司</p>
             </div>
 
@@ -78,7 +78,7 @@ export default function ContactSection() {
                 </div>
                 <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">联系电话</span>
               </div>
-              <p className="text-[14px] text-[#7B8BA6]">待补充</p>
+              <p className="text-[14px] text-[#7B8BA6]">18665355986</p>
             </div>
 
             <div className="glass-card rounded-2xl p-5">
@@ -88,7 +88,7 @@ export default function ContactSection() {
                 </div>
                 <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">电子邮箱</span>
               </div>
-              <p className="text-[14px] text-[#7B8BA6]">待补充</p>
+              <p className="text-[14px] text-[#7B8BA6]">ganqihui@phaeray.com</p>
             </div>
 
             <div className="glass-card rounded-2xl p-5">

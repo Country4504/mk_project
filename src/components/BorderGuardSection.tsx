@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
 import {
   ShieldAlert,
   FileLock,
@@ -60,115 +59,42 @@ const products = [
 function ProductCard({
   product,
   index,
-  total,
-  isActive,
 }: {
   product: (typeof products)[0];
   index: number;
-  total: number;
-  isActive: boolean;
 }) {
   const Icon = product.icon;
   return (
     <div
       data-product-index={index}
-      className="py-16 sm:py-20 px-6 sm:px-10"
+      className="product-card rounded-xl p-6 sm:p-7"
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16 items-center">
-        {/* 左侧视觉 */}
-        <div className="flex items-center justify-center">
-          <div className="relative w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full border border-[rgba(0,229,255,0.12)]" />
-            <div className="absolute inset-5 rounded-full border border-[rgba(0,229,255,0.08)]" />
-            <div className="absolute inset-0 animate-[spin_30s_linear_infinite]">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_6px_rgba(0,229,255,0.5)]" />
-            </div>
-            <div className="absolute inset-3 animate-[spin_20s_linear_infinite_reverse]">
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1 h-1 rounded-full bg-[#2979FF] shadow-[0_0_6px_rgba(41,121,255,0.5)]" />
-            </div>
-            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-[rgba(0,229,255,0.12)] to-[rgba(41,121,255,0.06)] flex items-center justify-center">
-              <Icon
-                className="w-10 h-10 sm:w-12 sm:h-12 text-[#00E5FF]"
-                strokeWidth={1.5}
-              />
-            </div>
-            <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-[#031224] border border-[rgba(0,229,255,0.25)] flex items-center justify-center">
-              <span className="text-[10px] font-mono text-[#00E5FF]">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-            </div>
-          </div>
+      <div className="flex items-start justify-between mb-5">
+        <div className="w-14 h-14 rounded-xl bg-[#F0EAFE] flex items-center justify-center">
+          <Icon className="w-7 h-7 text-[#8B5CF6]" strokeWidth={1.7} />
         </div>
-
-        {/* 右侧文案 */}
-        <div className="text-center lg:text-left">
-          <div className="flex items-baseline gap-3 flex-wrap mb-3 justify-center lg:justify-start">
-            <span className="text-[11px] font-mono text-[#00E5FF]/50 tracking-[0.2em] uppercase">
-              {product.subtitle}
-            </span>
-            <span className="text-[10px] font-mono text-[#00E5FF]/30">
-              {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-            </span>
+        <span className="text-2xl font-medium text-[#8B5CF6]">{String(index + 1).padStart(2, '0')}</span>
+      </div>
+      <span className="text-[10px] font-mono text-[#8B5CF6] tracking-[0.16em]">{product.subtitle}</span>
+      <h3 className="mt-2 text-xl font-bold text-[#111827]">{product.title}</h3>
+      <p className="mt-3 text-[13px] text-[#4B5563] leading-6">{product.desc}</p>
+      <div className="mt-5 grid grid-cols-1 gap-2">
+        {product.features.map((f, j) => (
+          <div key={j} className="flex items-center gap-2">
+            <ChevronRight className="w-3.5 h-3.5 text-[#8B5CF6] shrink-0" />
+            <span className="text-[12px] text-[#4B5563]">{f}</span>
           </div>
-          <h3 className="text-2xl sm:text-3xl font-bold text-[#E8EDF5] mb-4">
-            {product.title}
-          </h3>
-          <p className="text-[14px] text-[#8896AB] leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0">
-            {product.desc}
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6 max-w-md mx-auto lg:mx-0">
-            {product.features.map((f, j) => (
-              <div key={j} className="flex items-center gap-2">
-                <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]/60 shrink-0" />
-                <span className="text-[13px] text-[#8896AB]">{f}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
 }
 
 export default function BorderGuardSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  /* 跟踪当前滚动到哪个产品 */
-  useEffect(() => {
-    const cards = document.querySelectorAll('[data-product-index]');
-    if (!cards.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = parseInt(
-              entry.target.getAttribute('data-product-index') || '0',
-              10,
-            );
-            setActiveIndex(idx);
-          }
-        });
-      },
-      { threshold: 0.4 },
-    );
-
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, []);
-
-  /* 点击圆点 → 跳转到对应卡片 */
-  const scrollTo = (i: number) => {
-    const card = document.querySelector(`[data-product-index="${i}"]`);
-    card?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
     <section
       id="border-guard"
-      ref={sectionRef}
-      className="relative bg-[#031224]"
+      className="relative bg-[#F7F9FB]"
     >
       {/* 背景网格 */}
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
@@ -188,45 +114,14 @@ export default function BorderGuardSection() {
       </div>
 
       {/* ─── 产品卡片列表（纵向堆叠，无 min-h-screen） ─── */}
-      <div className="relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-10 sm:py-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
         {products.map((product, index) => (
           <ProductCard
             key={index}
             product={product}
             index={index}
-            total={products.length}
-            isActive={index === activeIndex}
           />
         ))}
-      </div>
-
-      {/* ─── 底部圆点导航 ─── */}
-      <div className="relative z-10 pb-12 sm:pb-16 px-6">
-        <div className="flex items-center justify-center gap-2 sm:gap-3 max-w-3xl mx-auto">
-          {products.map((p, i) => {
-            const isActive = i === activeIndex;
-            return (
-              <button
-                key={i}
-                onClick={() => scrollTo(i)}
-                aria-label={p.title}
-                className={`group relative h-2 rounded-full transition-all duration-300 ${
-                  isActive
-                    ? 'w-10 bg-[#00E5FF]'
-                    : 'w-2 bg-[rgba(0,229,255,0.25)] hover:bg-[rgba(0,229,255,0.45)]'
-                }`}
-              >
-                {/* 悬停 tooltip */}
-                <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-[#0C1424] border border-[rgba(0,229,255,0.2)] text-[11px] text-[#E8EDF5] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-                  {p.title}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-        <div className="mt-3 text-center text-[10px] font-mono text-[#00E5FF]/40 tracking-[0.2em]">
-          {String(activeIndex + 1).padStart(2, '0')} / {String(products.length).padStart(2, '0')}
-        </div>
       </div>
     </section>
   );

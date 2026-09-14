@@ -117,7 +117,7 @@ export default function SolutionsSection() {
                   key={i}
                   onMouseEnter={() => setActiveIdx(i)}
                   onFocus={() => setActiveIdx(i)}
-                  className={`flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal min-w-fit lg:min-w-0 lg:w-full ${
+                  className={`solution-selector flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal min-w-fit lg:min-w-0 lg:w-full ${
                     isActive
                       ? 'bg-[rgba(0,229,255,0.06)] border border-[rgba(0,229,255,0.2)] shadow-[0_0_20px_rgba(0,229,255,0.05)]'
                       : 'border border-transparent hover:bg-[rgba(0,229,255,0.03)] hover:border-[rgba(0,229,255,0.08)]'
@@ -125,7 +125,7 @@ export default function SolutionsSection() {
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
+                  <div className={`solution-selector-icon w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
                     isActive ? 'bg-[rgba(0,229,255,0.15)]' : 'bg-[rgba(0,229,255,0.06)]'
                   }`}>
                     <Icon className="w-4.5 h-4.5 text-[#00E5FF]" />

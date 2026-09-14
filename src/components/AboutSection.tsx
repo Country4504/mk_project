@@ -26,13 +26,6 @@ const highlights = [
   },
 ];
 
-const timeline = [
-  { year: '成立', event: '深圳市辉锐信息科技有限公司成立，聚焦企业信息安全领域' },
-  { year: '发展', event: '推出边界卫士产品线，覆盖终端安全、数据安全核心场景' },
-  { year: '深耕', event: '服务金融、政务、医疗、教育等多行业客户，积累丰富行业经验' },
-  { year: '未来', event: '持续创新安全技术与服务，助力企业构建弹性安全架构' },
-];
-
 export default function AboutSection() {
   return (
     <section id="about" className="relative py-24 lg:py-32">
@@ -89,41 +82,6 @@ export default function AboutSection() {
           })}
         </div>
 
-        {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="text-xl font-bold text-[#E8EDF5] mb-8 text-center">发展历程</h3>
-          <div className="relative">
-            {/* Line */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-[rgba(0,229,255,0.1)]" />
-
-            <div className="space-y-8">
-              {timeline.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`flex items-center gap-6 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} text-center`}
-                >
-                  <div className="flex-1">
-                    <div className={`glass-card rounded-xl p-4 ${i % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                      <div className="text-[11px] font-mono text-[#00E5FF]/60 tracking-wider mb-1">{item.year}</div>
-                      <p className="text-[13px] text-[#7B8BA6]">{item.event}</p>
-                    </div>
-                  </div>
-                  <div className="relative z-10 w-3 h-3 rounded-full bg-[#031224] border-2 border-[#00E5FF]/40 shrink-0" />
-                  <div className="flex-1" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
