@@ -7,13 +7,13 @@ import Image from 'next/image';
 
 const navItems = [
   { label: '首页', href: '#hero' },
-  { label: '服务', href: '#capabilities' },
-  { label: '解决方案', href: '#solutions' },
+  // { label: '服务', href: '#capabilities' },
+  { label: '解决方案', href: '/solutions' },
   { label: '边界卫士', href: '#border-guard' },
   { label: '成功案例', href: '#cases' },
   { label: '合作伙伴', href: '#partners' },
   { label: '关于我们', href: '#about' },
-  { label: '联系我们', href: '#contact' },
+  // { label: '联系我们', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -28,8 +28,16 @@ export default function Navbar() {
 
   const handleClick = (href: string) => {
     setMobileOpen(false);
+    if (href.startsWith('/')) {
+      window.location.href = href;
+      return;
+    }
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = `/${href}`;
+    }
   };
 
   return (
@@ -39,7 +47,7 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#102039]/88 backdrop-blur-2xl border-b border-[rgba(0,229,255,0.10)]'
+          ? 'bg-[#102039]/88 backdrop-blur-2xl'
           : 'bg-transparent'
       }`}
     >
@@ -62,13 +70,13 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden xl:flex items-center gap-0.5">
+          <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={(e) => { e.preventDefault(); handleClick(item.href); }}
-                className="px-3 py-2 text-[13px] text-[#7B8BA6] hover:text-[#00E5FF] transition-colors duration-200 rounded-md hover:bg-[rgba(0,229,255,0.04)]"
+                className="px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg hover:bg-[rgba(0,229,255,0.08)]"
               >
                 {item.label}
               </a>
@@ -99,7 +107,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden bg-[#102039]/95 backdrop-blur-2xl border-b border-[rgba(0,229,255,0.10)]"
+            className="xl:hidden bg-[#102039]/95 backdrop-blur-2xl"
           >
             <div className="px-6 py-4 space-y-0.5 max-h-[70vh] overflow-y-auto">
               {navItems.map((item) => (
@@ -107,7 +115,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => { e.preventDefault(); handleClick(item.href); }}
-                  className="block px-4 py-2.5 text-sm text-[#7B8BA6] hover:text-[#00E5FF] hover:bg-[rgba(0,229,255,0.04)] rounded-lg transition-colors"
+                  className="block px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] hover:bg-[rgba(0,229,255,0.08)] rounded-lg transition-all"
                 >
                   {item.label}
                 </a>
