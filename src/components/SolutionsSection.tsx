@@ -15,14 +15,16 @@ import {
 
 const solutions = [
   {
+    id: 'cloud-security',
     icon: Cloud,
     title: '云安全',
     subtitle: 'Cloud Security',
-    desc: '为公有云、私有云、混合云环境提供全面的安全防护，涵盖云工作负载保护、云安全态势管理、容器安全与微服务安全。',
+    desc: '为公有云、私有云、混合云环境提供全面的安全防护，涵盖负载保护、云安全态势管理、容器安全与微服务安全。',
     scenarios: ['多云环境统一管理', '云原生应用防护', '合规审计与态势感知'],
     value: '实现云环境安全可视化，降低配置风险，保障业务连续性与数据合规。',
   },
   {
+    id: 'data-security',
     icon: Database,
     title: '数据安全',
     subtitle: 'Data Security',
@@ -31,14 +33,16 @@ const solutions = [
     value: '确保核心数据资产安全可控，满足等保与行业监管合规要求。',
   },
   {
+    id: 'application-security',
     icon: Globe,
     title: '应用安全',
     subtitle: 'Application Security',
-    desc: '从需求分析到上线运营，提供贯穿应用全生命周期的安全服务，包括安全编码指导、漏洞扫描、渗透测试与 WAF 防护。',
+    desc: '从需求分析到上线运营，提供贯穿应用全生命周期的安全服务，包括漏洞扫描、渗透测试与 WAF 防护。',
     scenarios: ['Web 应用防火墙', 'API 安全防护', 'DevSecOps 集成'],
     value: '在开发阶段消除安全隐患，降低修复成本，保障业务应用安全稳定运行。',
   },
   {
+    id: 'network-security',
     icon: Network,
     title: '网络安全',
     subtitle: 'Network Security',
@@ -47,6 +51,7 @@ const solutions = [
     value: '实现网络威胁实时感知与自动响应，构建弹性网络安全架构。',
   },
   {
+    id: 'endpoint-security',
     icon: Monitor,
     title: '终端安全',
     subtitle: 'Endpoint Security',
@@ -55,6 +60,7 @@ const solutions = [
     value: '全面保护终端设备与数据安全，防止内部泄密与外部攻击。',
   },
   {
+    id: 'operations-security',
     icon: Settings,
     title: '运维安全',
     subtitle: 'Operations Security',
@@ -63,6 +69,7 @@ const solutions = [
     value: '规范运维操作流程，实现运维行为可追溯，降低内部操作风险。',
   },
   {
+    id: 'mobile-security',
     icon: Smartphone,
     title: '移动安全',
     subtitle: 'Mobile Security',
@@ -101,14 +108,14 @@ export default function SolutionsSection() {
             解决方案
           </h2>
           <p className="max-w-xl text-[#7B8BA6] text-[15px]">
-            七大安全解决方案，覆盖企业信息安全全场景
+            七大安全解决方案，覆盖企业信息安全全场景。选择方案查看完整内容
           </p>
         </motion.div>
 
         {/* Interactive Matrix */}
-        <div className="grid lg:grid-cols-12 gap-6">
+        <div className="grid items-stretch lg:grid-cols-12 gap-6">
           {/* Left: selector tabs */}
-          <div className="lg:col-span-4 flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+          <div className="lg:col-span-4 flex lg:h-full lg:flex-col lg:justify-between gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
             {solutions.map((sol, i) => {
               const Icon = sol.icon;
               const isActive = i === activeIdx;
@@ -117,7 +124,8 @@ export default function SolutionsSection() {
                   key={i}
                   onMouseEnter={() => setActiveIdx(i)}
                   onFocus={() => setActiveIdx(i)}
-                  className={`solution-selector flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal min-w-fit lg:min-w-0 lg:w-full ${
+                  onClick={() => { window.location.href = `/solutions#${sol.id}`; }}
+                  className={`solution-selector group flex cursor-pointer items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal min-w-fit lg:min-w-0 lg:w-full lg:flex-1 ${
                     isActive
                       ? 'bg-[rgba(0,229,255,0.06)] border border-[rgba(0,229,255,0.2)] shadow-[0_0_20px_rgba(0,229,255,0.05)]'
                       : 'border border-transparent hover:bg-[rgba(0,229,255,0.03)] hover:border-[rgba(0,229,255,0.08)]'
@@ -138,19 +146,18 @@ export default function SolutionsSection() {
                       {sol.subtitle}
                     </div>
                   </div>
-                  {isActive && (
-                    <div className="ml-auto hidden lg:block">
-                      <ArrowRight className="w-4 h-4 text-[#00E5FF]/60" />
-                    </div>
-                  )}
+                  <div className="ml-auto hidden items-center gap-2 lg:flex">
+                    {/* <span className={`text-[10px] transition-all ${isActive ? 'text-[#00E5FF]/70' : 'text-transparent group-hover:text-[#00E5FF]/60'}`}>查看详情</span> */}
+                    <ArrowRight className={`w-4 h-4 transition-transform ${isActive ? 'text-[#00E5FF]/80' : 'text-[#7B8BA6]/40 group-hover:text-[#00E5FF]/70'} group-hover:translate-x-1`} />
+                  </div>
                 </motion.button>
               );
             })}
           </div>
 
           {/* Right: detail panel */}
-          <div className="lg:col-span-8">
-            <div>
+          <div className="lg:col-span-8 h-full">
+            <div className="h-full">
               <motion.div
                 key={activeIdx}
                 animate={{ opacity: 1, y: 0 }}
@@ -196,6 +203,15 @@ export default function SolutionsSection() {
                   <div className="text-[11px] font-mono text-[#00E5FF]/50 tracking-wider uppercase mb-2">核心价值</div>
                   <p className="text-[14px] text-[#E8EDF5] leading-relaxed">{active.value}</p>
                 </div>
+
+                <a
+                  href={`/solutions#${active.id}`}
+                  onClick={(e) => { e.preventDefault(); window.location.href = `/solutions#${active.id}`; }}
+                  className="mt-7 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#00E5FF] to-[#2979FF] px-5 py-3 text-sm font-medium text-[#060B14] transition-all hover:gap-3 hover:shadow-[0_0_24px_rgba(0,229,255,0.3)]"
+                >
+                  {active.title}解决方案
+                  <ArrowRight className="h-4 w-4" />
+                </a>
 
                 {/* Corner decoration */}
                 <div className="absolute top-0 right-0 w-20 h-20 pointer-events-none">
