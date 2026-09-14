@@ -220,8 +220,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="#solutions"
-            onClick={(e) => { e.preventDefault(); document.querySelector('#solutions')?.scrollIntoView({ behavior: 'smooth' }); }}
+            href="/solutions"
             className="group px-7 py-3.5 text-sm font-semibold bg-gradient-to-r from-[#00E5FF] to-[#2979FF] text-[#060B14] rounded-lg hover:shadow-[0_0_30px_rgba(0,229,255,0.35)] transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
           >
             了解解决方案
