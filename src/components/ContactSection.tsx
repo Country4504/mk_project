@@ -58,9 +58,9 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4 space-y-5"
+            className="lg:col-span-4 flex flex-col gap-5 lg:h-full"
           >
-            <div className="glass-card rounded-2xl p-5">
+            <div className="glass-card rounded-2xl p-5 lg:flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
                   <MapPin className="w-4 h-4 text-[#00E5FF]" />
@@ -71,7 +71,7 @@ export default function ContactSection() {
               <p className="text-[13px] text-[#7B8BA6] mt-1">深圳市辉锐信息科技有限公司</p>
             </div>
 
-            <div className="glass-card rounded-2xl p-5">
+            <div className="glass-card rounded-2xl p-5 lg:flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
                   <Phone className="w-4 h-4 text-[#00E5FF]" />
@@ -81,7 +81,7 @@ export default function ContactSection() {
               <p className="text-[14px] text-[#7B8BA6]">18665355986</p>
             </div>
 
-            <div className="glass-card rounded-2xl p-5">
+            <div className="glass-card rounded-2xl p-5 lg:flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
                   <Mail className="w-4 h-4 text-[#00E5FF]" />
@@ -91,7 +91,7 @@ export default function ContactSection() {
               <p className="text-[14px] text-[#7B8BA6]">ganqihui@phaeray.com</p>
             </div>
 
-            <div className="glass-card rounded-2xl p-5">
+            <div className="glass-card rounded-2xl p-5 lg:flex-1">
               <div className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide mb-2">服务范围</div>
               <div className="flex flex-wrap gap-1.5">
                 {['安全咨询', '方案设计', '产品部署', '安全运营', '培训服务'].map((s, i) => (
@@ -109,9 +109,9 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-8"
+            className="lg:col-span-8 lg:h-full"
           >
-            <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 lg:p-8">
+            <form onSubmit={handleSubmit} className="glass-card h-full rounded-2xl p-6 lg:p-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
