@@ -65,7 +65,7 @@ export default function ContactSection() {
                 <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
                   <MapPin className="w-4 h-4 text-[#00E5FF]" />
                 </div>
-                <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">公司地址</span>
+                <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">公司地址</span>
               </div>
               <p className="text-[14px] text-[#E8EDF5]">广东省深圳市宝安区西乡华源科技创新园B座1区502</p>
               <p className="text-[13px] text-[#7B8BA6] mt-1">深圳市辉锐信息科技有限公司</p>
@@ -76,7 +76,7 @@ export default function ContactSection() {
                 <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
                   <Phone className="w-4 h-4 text-[#00E5FF]" />
                 </div>
-                <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">联系电话</span>
+                <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">联系电话</span>
               </div>
               <p className="text-[14px] text-[#7B8BA6]">18665355986</p>
             </div>
@@ -86,13 +86,13 @@ export default function ContactSection() {
                 <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
                   <Mail className="w-4 h-4 text-[#00E5FF]" />
                 </div>
-                <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">电子邮箱</span>
+                <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">电子邮箱</span>
               </div>
               <p className="text-[14px] text-[#7B8BA6]">ganqihui@phaeray.com</p>
             </div>
 
             <div className="glass-card rounded-2xl p-5">
-              <div className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase mb-2">服务范围</div>
+              <div className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide mb-2">服务范围</div>
               <div className="flex flex-wrap gap-1.5">
                 {['安全咨询', '方案设计', '产品部署', '安全运营', '培训服务'].map((s, i) => (
                   <span key={i} className="text-[11px] px-2 py-1 rounded bg-[rgba(0,229,255,0.05)] text-[#7B8BA6] border border-[rgba(0,229,255,0.06)]">
@@ -114,7 +114,7 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 lg:p-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase mb-2">
+                  <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
                     公司名称 *
                   </label>
                   <input
@@ -123,12 +123,12 @@ export default function ContactSection() {
                     required
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
+                    className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入公司名称"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase mb-2">
+                  <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
                     联系人 *
                   </label>
                   <input
@@ -137,12 +137,12 @@ export default function ContactSection() {
                     required
                     value={formData.contact}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
+                    className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入姓名"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase mb-2">
+                  <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
                     联系电话 *
                   </label>
                   <input
@@ -151,12 +151,12 @@ export default function ContactSection() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
+                    className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入联系电话"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase mb-2">
+                  <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
                     电子邮箱
                   </label>
                   <input
@@ -164,21 +164,21 @@ export default function ContactSection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
+                    className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入邮箱地址"
                   />
                 </div>
               </div>
 
               <div className="mb-5">
-                <label className="block text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase mb-2">
+                <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
                   安全需求
                 </label>
                 <select
                   name="need"
                   value={formData.need}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300 appearance-none"
+                  className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300 appearance-none"
                 >
                   <option value="" className="bg-[#2A4A70]">请选择需求类型</option>
                   <option value="consulting" className="bg-[#2A4A70]">安全咨询</option>

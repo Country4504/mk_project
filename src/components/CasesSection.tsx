@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import {
   Building2,
   Landmark,
@@ -88,6 +89,33 @@ export default function CasesSection() {
           </p>
         </motion.div>
 
+        {/* Customer logo wall */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 lg:mb-16 rounded-2xl border border-[rgba(0,229,255,0.12)] bg-[rgba(16,32,57,0.55)] p-4 sm:p-6 lg:p-8"
+        >
+          <div className="flex items-center justify-between gap-4 mb-5">
+            <div>
+              <div className="text-[10px] font-mono tracking-[0.2em] text-[#00E5FF]/65 uppercase">Trusted By</div>
+              <h3 className="mt-2 text-lg sm:text-xl font-semibold text-[#E8EDF5]">服务客户</h3>
+            </div>
+            <div className="hidden sm:block h-px flex-1 max-w-xs bg-gradient-to-r from-[#00E5FF]/30 to-transparent" />
+          </div>
+          <div className="overflow-hidden rounded-xl bg-white/95 px-3 py-4 sm:px-6 sm:py-5">
+            <Image
+              src="/成功案例Logo墙.png"
+              alt="辉锐信息成功案例客户 Logo 墙"
+              width={1836}
+              height={926}
+              className="h-auto w-full object-contain"
+              priority={false}
+            />
+          </div>
+        </motion.div>
+
         {/* Cases grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {cases.map((c, i) => {
@@ -119,19 +147,19 @@ export default function CasesSection() {
                 {/* Three-part structure */}
                 <div className="space-y-4">
                   <div>
-                    <div className="text-[10px] font-mono tracking-wider uppercase mb-1.5" style={{ color: `${c.color}99` }}>
+                    <div className="cn-ui-label text-[11px] tracking-wide mb-1.5" style={{ color: `${c.color}99` }}>
                       行业痛点
                     </div>
                     <p className="text-[13px] text-[#7B8BA6] leading-relaxed">{c.pain}</p>
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono tracking-wider uppercase mb-1.5" style={{ color: `${c.color}99` }}>
+                    <div className="cn-ui-label text-[11px] tracking-wide mb-1.5" style={{ color: `${c.color}99` }}>
                       解决方案
                     </div>
                     <p className="text-[13px] text-[#7B8BA6] leading-relaxed">{c.solution}</p>
                   </div>
                   <div className="pt-3 border-t border-[rgba(0,229,255,0.06)]">
-                    <div className="text-[10px] font-mono tracking-wider uppercase mb-1.5" style={{ color: `${c.color}99` }}>
+                    <div className="cn-ui-label text-[11px] tracking-wide mb-1.5" style={{ color: `${c.color}99` }}>
                       交付价值
                     </div>
                     <p className="text-[13px] text-[#E8EDF5] leading-relaxed">{c.value}</p>

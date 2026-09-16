@@ -34,10 +34,8 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
           className="mb-16 lg:mb-20"
         >
           <div className="flex items-center gap-3 mb-4">
@@ -62,10 +60,8 @@ export default function AboutSection() {
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                initial={false}
+                animate={{ opacity: 1, y: 0 }}
                 className="glass-card rounded-2xl p-6 group"
               >
                 <div className="flex items-start gap-4">
