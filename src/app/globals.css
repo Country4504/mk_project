@@ -105,6 +105,20 @@
   transform: translateY(-2px);
 }
 
+/* Crisp Chinese glyphs for contact form labels and controls. Avoid the mono fallback used by the English UI labels. */
+.contact-form-label,
+.contact-form-control {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", sans-serif;
+  font-synthesis: none;
+}
+.contact-form-label { font-weight: 500; }
+
+.cn-ui-label {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", sans-serif;
+  font-synthesis: none;
+  font-weight: 500;
+}
+
 /* === GRADIENT TEXT === */
 .gradient-text {
   background: linear-gradient(135deg, #00E5FF 0%, #2979FF 50%, #00E5FF 100%);

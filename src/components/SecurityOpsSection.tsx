@@ -173,7 +173,7 @@ export default function SecurityOpsSection() {
             <div className="lg:col-span-4 p-5 border-b lg:border-b-0 lg:border-r border-[rgba(0,229,255,0.06)]">
               <div className="flex items-center gap-2 mb-4">
                 <AlertTriangle className="w-3.5 h-3.5 text-[#FF6D00]/70" />
-                <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">威胁情报日志</span>
+                <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">威胁情报日志</span>
               </div>
               <TypingLog />
             </div>
@@ -182,7 +182,7 @@ export default function SecurityOpsSection() {
             <div className="lg:col-span-4 p-5 border-b lg:border-b-0 lg:border-r border-[rgba(0,229,255,0.06)]">
               <div className="flex items-center gap-2 mb-4">
                 <Activity className="w-3.5 h-3.5 text-[#00E5FF]/70" />
-                <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">态势感知</span>
+                <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">态势感知</span>
               </div>
               <RadarDisplay />
               {/* Network nodes */}
@@ -204,7 +204,7 @@ export default function SecurityOpsSection() {
             <div className="lg:col-span-4 p-5">
               <div className="flex items-center gap-2 mb-4">
                 <CheckCircle className="w-3.5 h-3.5 text-[#00E676]/70" />
-                <span className="text-[11px] font-mono text-[#7B8BA6] tracking-wider uppercase">风险 & 资产</span>
+                <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">风险 & 资产</span>
               </div>
 
               {/* Risk bars */}

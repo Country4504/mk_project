@@ -185,7 +185,7 @@ export default function SolutionsSection() {
 
                 {/* Scenarios */}
                 <div className="mb-6">
-                  <div className="text-[11px] font-mono text-[#00E5FF]/50 tracking-wider uppercase mb-3">适用场景</div>
+                    <div className="cn-ui-label text-[12px] text-[#00E5FF]/50 tracking-wide mb-3">适用场景</div>
                   <div className="flex flex-wrap gap-2">
                     {active.scenarios.map((s, j) => (
                       <span
@@ -200,7 +200,7 @@ export default function SolutionsSection() {
 
                 {/* Core value */}
                 <div className="pt-5 border-t border-[rgba(0,229,255,0.06)]">
-                  <div className="text-[11px] font-mono text-[#00E5FF]/50 tracking-wider uppercase mb-2">核心价值</div>
+                  <div className="cn-ui-label text-[12px] text-[#00E5FF]/50 tracking-wide mb-2">核心价值</div>
                   <p className="text-[14px] text-[#E8EDF5] leading-relaxed">{active.value}</p>
                 </div>
 
