@@ -1,13 +1,25 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Send, CheckCircle } from 'lucide-react';
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement, options: { sitekey: string; callback: (token: string) => void; 'expired-callback': () => void; 'error-callback': () => void }) => string;
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<string | undefined>(undefined);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     company: '',
@@ -16,6 +28,28 @@ export default function ContactSection() {
     email: '',
     need: '',
   });
+
+  useEffect(() => {
+    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+    if (!siteKey || !turnstileRef.current) return;
+    const render = () => {
+      if (!window.turnstile || !turnstileRef.current || widgetId.current) return;
+      widgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: siteKey,
+        callback: (token) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(''),
+        'error-callback': () => setTurnstileToken(''),
+      });
+    };
+    if (window.turnstile) render();
+    else {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true;
+      script.onload = render;
+      document.head.appendChild(script);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,11 +63,17 @@ export default function ContactSection() {
     if (formData.need.trim().length < 10) errors.need = '请详细描述您的安全需求（至少 10 个字符）';
     setFieldErrors(errors);
     if (Object.keys(errors).length > 0) return;
+    if (!turnstileToken) {
+      setSubmitError('请先完成安全验证');
+      return;
+    }
     setSubmitting(true);
     setSubmitError('');
 
     try {
-      const response = await fetch('https://formspree.io/f/xeaojpqe', {
+      const apiUrl = process.env.NEXT_PUBLIC_CONTACT_API_URL;
+      if (!apiUrl) throw new Error('联系接口尚未配置');
+      const response = await fetch(`${apiUrl}/contact`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -41,6 +81,8 @@ export default function ContactSection() {
         },
         body: JSON.stringify({
           ...formData,
+          turnstileToken,
+          website: '',
           _subject: '官网收到新的安全咨询',
         }),
       });
@@ -52,6 +94,8 @@ export default function ContactSection() {
 
       setSubmitted(true);
       setFormData({ company: '', contact: '', phone: '', email: '', need: '' });
+      setTurnstileToken('');
+      if (widgetId.current && window.turnstile) window.turnstile.reset(widgetId.current);
       setTimeout(() => setSubmitted(false), 4000);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : '提交失败，请稍后重试');
@@ -159,6 +203,7 @@ export default function ContactSection() {
           >
             <form onSubmit={handleSubmit} className="glass-card h-full rounded-2xl p-6 lg:p-8">
               <input type="hidden" name="_subject" value="官网收到新的安全咨询" readOnly />
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-px w-px opacity-0" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
@@ -227,6 +272,8 @@ export default function ContactSection() {
                   {fieldErrors.email && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.email}</p>}
                 </div>
               </div>
+
+              <div ref={turnstileRef} className="mb-5 min-h-[65px]" aria-label="安全验证" />
 
               <div className="mb-5">
                 <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
