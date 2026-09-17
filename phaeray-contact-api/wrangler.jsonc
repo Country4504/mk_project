@@ -13,7 +13,7 @@
 	"upload_source_maps": true,
 	"vars": {
 		"ALLOWED_ORIGIN": "https://demo.siir.beer",
-		"FORMSPREE_ENDPOINT": "https://formspree.io/f/xeaojpqe"
+		"RESEND_TO_EMAIL": "jkuufo@gmail.com"
 	}
 	/**
 	 * Smart Placement
