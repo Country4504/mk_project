@@ -6,6 +6,9 @@ import { MapPin, Phone, Mail, Send, CheckCircle } from 'lucide-react';
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     company: '',
     contact: '',
@@ -14,14 +17,57 @@ export default function ContactSection() {
     need: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    const errors: Record<string, string> = {};
+    const phonePattern = /^(?:1[3-9]\d{9}|0\d{2,3}[- ]?\d{7,8})$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.company.trim().length < 2) errors.company = '请输入至少 2 个字符的公司名称';
+    if (formData.contact.trim().length < 2) errors.contact = '请输入联系人姓名';
+    if (!phonePattern.test(formData.phone.trim())) errors.phone = '请输入有效的手机或座机号码';
+    if (formData.email.trim() && !emailPattern.test(formData.email.trim())) errors.email = '请输入有效的电子邮箱';
+    if (formData.need.trim().length < 10) errors.need = '请详细描述您的安全需求（至少 10 个字符）';
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) return;
+    setSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/xeaojpqe', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: '官网收到新的安全咨询',
+        }),
+      });
+
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result?.errors?.[0]?.message || '提交失败，请稍后重试');
+      }
+
+      setSubmitted(true);
+      setFormData({ company: '', contact: '', phone: '', email: '', need: '' });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : '提交失败，请稍后重试');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFieldErrors((prev) => {
+      if (!prev[e.target.name]) return prev;
+      const next = { ...prev };
+      delete next[e.target.name];
+      return next;
+    });
   };
 
   return (
@@ -112,6 +158,7 @@ export default function ContactSection() {
             className="lg:col-span-8 lg:h-full"
           >
             <form onSubmit={handleSubmit} className="glass-card h-full rounded-2xl p-6 lg:p-8">
+              <input type="hidden" name="_subject" value="官网收到新的安全咨询" readOnly />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
@@ -125,7 +172,10 @@ export default function ContactSection() {
                     onChange={handleChange}
                     className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入公司名称"
+                    minLength={2}
+                    aria-invalid={Boolean(fieldErrors.company)}
                   />
+                  {fieldErrors.company && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.company}</p>}
                 </div>
                 <div>
                   <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
@@ -139,7 +189,10 @@ export default function ContactSection() {
                     onChange={handleChange}
                     className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入姓名"
+                    minLength={2}
+                    aria-invalid={Boolean(fieldErrors.contact)}
                   />
+                  {fieldErrors.contact && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.contact}</p>}
                 </div>
                 <div>
                   <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
@@ -153,7 +206,10 @@ export default function ContactSection() {
                     onChange={handleChange}
                     className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入联系电话"
+                    pattern="(?:1[3-9]\d{9}|0\d{2,3}[- ]?\d{7,8})"
+                    aria-invalid={Boolean(fieldErrors.phone)}
                   />
+                  {fieldErrors.phone && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.phone}</p>}
                 </div>
                 <div>
                   <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
@@ -166,7 +222,9 @@ export default function ContactSection() {
                     onChange={handleChange}
                     className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
                     placeholder="请输入邮箱地址"
+                    aria-invalid={Boolean(fieldErrors.email)}
                   />
+                  {fieldErrors.email && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.email}</p>}
                 </div>
               </div>
 
@@ -174,28 +232,33 @@ export default function ContactSection() {
                 <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
                   安全需求
                 </label>
-                <select
+                <textarea
                   name="need"
+                  required
                   value={formData.need}
                   onChange={handleChange}
-                  className="contact-form-control w-full px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300 appearance-none"
+                  className="contact-form-control w-full min-h-32 resize-y px-4 py-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.2)] text-[14px] text-[#E8EDF5] placeholder-[#7B8BA6]/40 focus:outline-none focus:border-[rgba(0,229,255,0.3)] focus:shadow-[0_0_20px_rgba(0,229,255,0.06)] transition-all duration-300"
+                  placeholder="请描述您遇到的安全问题、保护对象或希望了解的解决方案"
+                  minLength={10}
+                  maxLength={1000}
+                  aria-invalid={Boolean(fieldErrors.need)}
                 >
-                  <option value="" className="bg-[#2A4A70]">请选择需求类型</option>
-                  <option value="consulting" className="bg-[#2A4A70]">安全咨询</option>
-                  <option value="solution" className="bg-[#2A4A70]">解决方案</option>
-                  <option value="product" className="bg-[#2A4A70]">产品采购</option>
-                  <option value="service" className="bg-[#2A4A70]">安全运营</option>
-                  <option value="training" className="bg-[#2A4A70]">培训服务</option>
-                  <option value="other" className="bg-[#2A4A70]">其他</option>
-                </select>
+                </textarea>
+                {fieldErrors.need && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.need}</p>}
               </div>
+
+              {submitError && (
+                <p role="alert" className="mt-4 text-sm text-[#FF8A80]">{submitError}</p>
+              )}
 
               <button
                 type="submit"
-                disabled={submitted}
+                disabled={submitted || submitting}
                 className="w-full sm:w-auto px-8 py-3.5 text-sm font-semibold bg-gradient-to-r from-[#00E5FF] to-[#2979FF] text-[#060B14] rounded-xl hover:shadow-[0_0_30px_rgba(0,229,255,0.35)] transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-60"
               >
-                {submitted ? (
+                {submitting ? (
+                  <>提交中...</>
+                ) : submitted ? (
                   <>
                     <CheckCircle className="w-4 h-4" />
                     提交成功
