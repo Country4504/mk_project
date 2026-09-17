@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Send, CheckCircle } from 'lucide-react';
 
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAAE56foQjB4O9A_-s';
+const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || 'https://phaeray-contact-api.jkuufo.workers.dev';
+
 declare global {
   interface Window {
     turnstile?: {
@@ -30,8 +33,8 @@ export default function ContactSection() {
   });
 
   useEffect(() => {
-    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-    if (!siteKey || !turnstileRef.current) return;
+    const siteKey = TURNSTILE_SITE_KEY;
+    if (!turnstileRef.current) return;
     const render = () => {
       if (!window.turnstile || !turnstileRef.current || widgetId.current) return;
       widgetId.current = window.turnstile.render(turnstileRef.current, {
@@ -71,9 +74,7 @@ export default function ContactSection() {
     setSubmitError('');
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_CONTACT_API_URL;
-      if (!apiUrl) throw new Error('联系接口尚未配置');
-      const response = await fetch(`${apiUrl}/contact`, {
+      const response = await fetch(`${CONTACT_API_URL}/contact`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
