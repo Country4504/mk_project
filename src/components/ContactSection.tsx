@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Send, CheckCircle } from 'lucide-react';
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAAE56foQjB4O9A_-s';
-const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || 'https://phaeray-contact-api.jkuufo.workers.dev';
+const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || 'https://phaerayapi.siir.beer';
 
 declare global {
   interface Window {
