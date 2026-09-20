@@ -276,6 +276,11 @@
   background: linear-gradient(90deg, transparent, rgba(0,229,255,0.2) 20%, rgba(0,229,255,0.2) 80%, transparent);
 }
 
+.nav-at-top a,
+.nav-at-top svg {
+  color: #ffffff !important;
+}
+
 /* === BORDER GLOW HOVER === */
 .border-glow-hover {
   position: relative;

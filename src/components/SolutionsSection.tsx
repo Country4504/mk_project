@@ -115,7 +115,7 @@ export default function SolutionsSection() {
         {/* Interactive Matrix */}
         <div className="grid items-stretch lg:grid-cols-12 gap-6">
           {/* Left: selector tabs */}
-          <div className="lg:col-span-4 flex lg:h-full lg:flex-col lg:justify-between gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-3 lg:flex lg:h-full lg:flex-col lg:justify-between gap-2 pb-2 lg:pb-0">
             {solutions.map((sol, i) => {
               const Icon = sol.icon;
               const isActive = i === activeIdx;
@@ -124,13 +124,13 @@ export default function SolutionsSection() {
                   key={i}
                   onMouseEnter={() => setActiveIdx(i)}
                   onFocus={() => setActiveIdx(i)}
-                  onClick={() => { window.location.href = `/solutions#${sol.id}`; }}
-                  className={`solution-selector group flex cursor-pointer items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal min-w-fit lg:min-w-0 lg:w-full lg:flex-1 ${
+                  onClick={() => setActiveIdx(i)}
+                  className={`solution-selector group flex min-w-0 w-full cursor-pointer items-center gap-2 px-3 py-3.5 rounded-xl text-left transition-all duration-300 whitespace-normal lg:min-w-0 lg:w-full lg:flex-1 ${
                     isActive
                       ? 'bg-[rgba(0,229,255,0.06)] border border-[rgba(0,229,255,0.2)] shadow-[0_0_20px_rgba(0,229,255,0.05)]'
                       : 'border border-transparent hover:bg-[rgba(0,229,255,0.03)] hover:border-[rgba(0,229,255,0.08)]'
                   }`}
-                  whileHover={{ x: 4 }}
+                  whileHover={{ x: 0 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="solution-selector-icon w-9 h-9 flex items-center justify-center shrink-0">

@@ -31,6 +31,7 @@ const solutionItems = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navTextClass = !scrolled ? 'nav-at-top' : '';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -57,7 +58,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navTextClass} ${
         scrolled
           ? 'bg-[#102039]/88 backdrop-blur-2xl'
           : 'bg-transparent'

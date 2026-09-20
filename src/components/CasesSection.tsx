@@ -116,8 +116,8 @@ export default function CasesSection() {
           </div>
         </motion.div>
 
-        {/* Cases grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Industry case introductions are intentionally hidden. */}
+        {false && <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {cases.map((c, i) => {
             const Icon = c.icon;
             return (
@@ -165,7 +165,7 @@ export default function CasesSection() {
               </motion.div>
             );
           })}
-        </div>
+        </div>}
       </div>
     </section>
   );
