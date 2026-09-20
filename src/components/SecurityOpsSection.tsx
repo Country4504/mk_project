@@ -189,9 +189,7 @@ export default function SecurityOpsSection() {
               <div className="mt-4 flex items-center justify-center gap-3">
                 {['防火墙', 'IDS', 'WAF', 'SOC'].map((node, i) => (
                   <div key={i} className="flex flex-col items-center gap-1">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                      i === 1 ? 'bg-[rgba(255,109,0,0.1)] border border-[rgba(255,109,0,0.2)]' : 'bg-[rgba(0,229,255,0.06)] border border-[rgba(0,229,255,0.1)]'
-                    }`}>
+                    <div className="w-8 h-8 flex items-center justify-center">
                       <Shield className={`w-3.5 h-3.5 ${i === 1 ? 'text-[#FF6D00]/70' : 'text-[#00E5FF]/60'}`} />
                     </div>
                     <span className="text-[9px] text-[#7B8BA6]/60">{node}</span>
@@ -230,7 +228,7 @@ export default function SecurityOpsSection() {
                 {assetStatus.map((asset, i) => {
                   const Icon = asset.icon;
                   return (
-                    <div key={i} className="p-2.5 rounded-lg bg-[rgba(0,229,255,0.03)] border border-[rgba(0,229,255,0.05)]">
+                    <div key={i} className="p-2.5">
                       <div className="flex items-center gap-1.5 mb-1">
                         <Icon className="w-3 h-3 text-[#00E5FF]/50" />
                         <span className="text-[10px] text-[#7B8BA6]">{asset.label}</span>

@@ -135,11 +135,8 @@ export default function CasesSection() {
 
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-5">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: `${c.color}15` }}
-                  >
-                    <Icon className="w-5 h-5" style={{ color: c.color }} />
+                  <div className="w-10 h-10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-black" />
                   </div>
                   <h3 className="text-base font-semibold text-[#E8EDF5]">{c.industry}</h3>
                 </div>
@@ -147,19 +144,19 @@ export default function CasesSection() {
                 {/* Three-part structure */}
                 <div className="space-y-4">
                   <div>
-                    <div className="cn-ui-label text-[11px] tracking-wide mb-1.5" style={{ color: `${c.color}99` }}>
+                    <div className="cn-ui-label text-[14px] !font-semibold tracking-wide mb-1.5 text-black">
                       行业痛点
                     </div>
                     <p className="text-[13px] text-[#7B8BA6] leading-relaxed">{c.pain}</p>
                   </div>
                   <div>
-                    <div className="cn-ui-label text-[11px] tracking-wide mb-1.5" style={{ color: `${c.color}99` }}>
+                    <div className="cn-ui-label text-[14px] !font-semibold tracking-wide mb-1.5 text-black">
                       解决方案
                     </div>
                     <p className="text-[13px] text-[#7B8BA6] leading-relaxed">{c.solution}</p>
                   </div>
                   <div className="pt-3 border-t border-[rgba(0,229,255,0.06)]">
-                    <div className="cn-ui-label text-[11px] tracking-wide mb-1.5" style={{ color: `${c.color}99` }}>
+                    <div className="cn-ui-label text-[14px] !font-semibold tracking-wide mb-1.5 text-black">
                       交付价值
                     </div>
                     <p className="text-[13px] text-[#E8EDF5] leading-relaxed">{c.value}</p>

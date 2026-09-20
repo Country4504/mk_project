@@ -18,8 +18,8 @@ function ProductCard({
       className="product-card rounded-xl p-6 sm:p-7"
     >
       <div className="flex items-start justify-between mb-5">
-        <div className="w-14 h-14 rounded-xl bg-[#F0EAFE] flex items-center justify-center">
-          <Icon className="w-7 h-7 text-[#8B5CF6]" strokeWidth={1.7} />
+        <div className="w-14 h-14 flex items-center justify-center">
+          <Icon className="w-7 h-7 text-black" strokeWidth={1.7} />
         </div>
         <span className="text-2xl font-medium text-[#8B5CF6]">{String(index + 1).padStart(2, '0')}</span>
       </div>

@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 /* ── Canvas particle network with depth ── */
 function ParticleNetwork() {
@@ -219,17 +220,15 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
-            href="/solutions"
-            className="group px-7 py-3.5 text-sm font-semibold bg-gradient-to-r from-[#00E5FF] to-[#2979FF] text-[#060B14] rounded-lg hover:shadow-[0_0_30px_rgba(0,229,255,0.35)] transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
-          >
-            了解解决方案
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </a>
+          <div className="flex flex-wrap items-center gap-2 md:flex-row">
+            <Button asChild className="rounded-full bg-white text-black hover:bg-gray-100 hover:text-black">
+              <a href="/solutions">解决方案</a>
+            </Button>
+          </div>
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className="px-7 py-3.5 text-sm font-semibold border border-[rgba(0,229,255,0.25)] text-[#00E5FF] rounded-lg hover:bg-[rgba(0,229,255,0.05)] hover:border-[rgba(0,229,255,0.4)] transition-all duration-300"
+            className="px-7 py-3.5 text-sm font-semibold bg-black text-white rounded-full hover:bg-[#1f1f1f] transition-all duration-300"
           >
             联系安全专家
           </a>

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { borderGuardHref, borderGuardProducts } from '@/lib/border-guard-products';
+import { Button } from '@/components/ui/button';
 
 const navItems = [
   { label: '首页', href: '#hero' },
@@ -84,30 +85,36 @@ export default function Navbar() {
           <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => item.href === '/solutions' ? (
               <div key={item.href} className="group relative">
-                <a href="/solutions" onClick={(e) => { e.preventDefault(); handleClick('/solutions'); }} className="flex items-center gap-1 px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg hover:bg-[rgba(0,229,255,0.08)]">
+                <a href="/solutions" onClick={(e) => { e.preventDefault(); handleClick('/solutions'); }} className="flex items-center gap-1 px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg">
                   {item.label}<ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
                 </a>
                 <div className="invisible absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 translate-y-2 rounded-xl bg-[#102039]/98 p-2 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,.35)] backdrop-blur-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                  {solutionItems.map((subItem) => <a key={subItem.href} href={`/solutions${subItem.href}`} onClick={(e) => { e.preventDefault(); window.location.href = `/solutions${subItem.href}`; }} className="block rounded-lg px-3 py-2.5 text-sm text-[#AAB8CC] transition-colors hover:bg-[#00E5FF]/10 hover:text-[#00E5FF]">{subItem.label}</a>)}
+                  {solutionItems.map((subItem) => <a key={subItem.href} href={`/solutions${subItem.href}`} onClick={(e) => { e.preventDefault(); window.location.href = `/solutions${subItem.href}`; }} className="block rounded-lg px-3 py-2.5 text-sm text-[#AAB8CC] transition-colors hover:text-[#00E5FF]">{subItem.label}</a>)}
                 </div>
               </div>
             ) : item.label === '边界卫士' ? (
               <div key={item.href} className="group relative">
-                <a href="#border-guard" onClick={(e) => { e.preventDefault(); handleClick('#border-guard'); }} className="flex items-center gap-1 px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg hover:bg-[rgba(0,229,255,0.08)]">边界卫士<ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" /></a>
+                <a href="#border-guard" onClick={(e) => { e.preventDefault(); handleClick('#border-guard'); }} className="flex items-center gap-1 px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg">边界卫士<ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" /></a>
                 <div className="invisible absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 translate-y-2 rounded-xl bg-[#102039]/98 p-2 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,.35)] backdrop-blur-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                  {borderGuardProducts.map((subItem) => <a key={subItem.slug} href={borderGuardHref(subItem.slug)} className="block rounded-lg px-3 py-2.5 text-sm text-[#AAB8CC] transition-colors hover:bg-[#00E5FF]/10 hover:text-[#00E5FF]">{subItem.title}</a>)}
+                  {borderGuardProducts.map((subItem) => <a key={subItem.slug} href={borderGuardHref(subItem.slug)} className="block rounded-lg px-3 py-2.5 text-sm text-[#AAB8CC] transition-colors hover:text-[#00E5FF]">{subItem.title}</a>)}
                 </div>
               </div>
             ) : (
-              <a key={item.href} href={item.href} onClick={(e) => { e.preventDefault(); handleClick(item.href); }} className="px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg hover:bg-[rgba(0,229,255,0.08)]">{item.label}</a>
+              <a key={item.href} href={item.href} onClick={(e) => { e.preventDefault(); handleClick(item.href); }} className="px-3.5 py-2.5 text-[15px] font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF] transition-all duration-200 rounded-lg">{item.label}</a>
             ))}
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleClick('#contact'); }}
-              className="ml-3 px-5 py-2 text-[13px] font-medium bg-gradient-to-r from-[#00E5FF] to-[#2979FF] text-[#060B14] rounded-lg hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] transition-all duration-300"
-            >
-              安全咨询
-            </a>
+            <div className="ml-3">
+              <Button
+                asChild
+                className="rounded-full bg-black text-white hover:bg-[#1f1f1f] hover:text-white"
+              >
+                <a
+                  href="#contact"
+                  onClick={(e) => { e.preventDefault(); handleClick('#contact'); }}
+                >
+                  安全咨询
+                </a>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile toggle */}
@@ -132,15 +139,15 @@ export default function Navbar() {
             <div className="px-6 py-4 space-y-0.5 max-h-[70vh] overflow-y-auto">
               {navItems.map((item) => item.href === '/solutions' ? (
                 <div key={item.href}>
-                  <a href="/solutions" onClick={(e) => { e.preventDefault(); handleClick('/solutions'); }} className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:bg-[#00E5FF]/10 hover:text-[#00E5FF]">{item.label}<ChevronDown className="h-4 w-4" /></a>
+                  <a href="/solutions" onClick={(e) => { e.preventDefault(); handleClick('/solutions'); }} className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF]">{item.label}<ChevronDown className="h-4 w-4" /></a>
                   <div className="ml-4 border-l border-[#00E5FF]/15 pl-3">
                     {solutionItems.map((subItem) => <a key={subItem.href} href={`/solutions${subItem.href}`} onClick={(e) => { e.preventDefault(); window.location.href = `/solutions${subItem.href}`; }} className="block px-3 py-2 text-sm text-[#7B8BA6] hover:text-[#00E5FF]">{subItem.label}</a>)}
                   </div>
                 </div>
               ) : item.label === '边界卫士' ? (
-                <div key={item.href}><a href="#border-guard" onClick={(e) => { e.preventDefault(); handleClick('#border-guard'); }} className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:bg-[rgba(0,229,255,0.08)] hover:text-[#00E5FF]">边界卫士<ChevronDown className="h-4 w-4" /></a><div className="ml-4 border-l border-[#00E5FF]/15 pl-3">{borderGuardProducts.map((subItem) => <a key={subItem.slug} href={borderGuardHref(subItem.slug)} onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-[#7B8BA6] hover:text-[#00E5FF]">{subItem.title}</a>)}</div></div>
+                <div key={item.href}><a href="#border-guard" onClick={(e) => { e.preventDefault(); handleClick('#border-guard'); }} className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF]">边界卫士<ChevronDown className="h-4 w-4" /></a><div className="ml-4 border-l border-[#00E5FF]/15 pl-3">{borderGuardProducts.map((subItem) => <a key={subItem.slug} href={borderGuardHref(subItem.slug)} onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-[#7B8BA6] hover:text-[#00E5FF]">{subItem.title}</a>)}</div></div>
               ) : (
-                <a key={item.href} href={item.href} onClick={(e) => { e.preventDefault(); handleClick(item.href); }} className="block rounded-lg px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:bg-[rgba(0,229,255,0.08)] hover:text-[#00E5FF]">{item.label}</a>
+                <a key={item.href} href={item.href} onClick={(e) => { e.preventDefault(); handleClick(item.href); }} className="block rounded-lg px-4 py-3 text-base font-medium tracking-wide text-[#AAB8CC] hover:text-[#00E5FF]">{item.label}</a>
               ))}
             </div>
           </motion.div>

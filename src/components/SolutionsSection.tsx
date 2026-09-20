@@ -133,10 +133,8 @@ export default function SolutionsSection() {
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className={`solution-selector-icon w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
-                    isActive ? 'bg-[rgba(0,229,255,0.15)]' : 'bg-[rgba(0,229,255,0.06)]'
-                  }`}>
-                    <Icon className="w-4.5 h-4.5 text-[#00E5FF]" />
+                  <div className="solution-selector-icon w-9 h-9 flex items-center justify-center shrink-0">
+                    <Icon className="w-4.5 h-4.5 text-black" />
                   </div>
                   <div>
                     <div className={`text-sm font-medium transition-colors ${isActive ? 'text-[#00E5FF]' : 'text-[#E8EDF5]'}`}>
@@ -171,8 +169,8 @@ export default function SolutionsSection() {
 
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[rgba(0,229,255,0.15)] to-[rgba(41,121,255,0.1)] flex items-center justify-center glow-cyan">
-                    <ActiveIcon className="w-7 h-7 text-[#00E5FF]" />
+                  <div className="w-14 h-14 flex items-center justify-center">
+                    <ActiveIcon className="w-7 h-7 text-black" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-[#E8EDF5]">{active.title}</h3>
@@ -207,7 +205,7 @@ export default function SolutionsSection() {
                 <a
                   href={`/solutions#${active.id}`}
                   onClick={(e) => { e.preventDefault(); window.location.href = `/solutions#${active.id}`; }}
-                  className="mt-7 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#00E5FF] to-[#2979FF] px-5 py-3 text-sm font-medium text-[#060B14] transition-all hover:gap-3 hover:shadow-[0_0_24px_rgba(0,229,255,0.3)]"
+                  className="mt-7 inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white transition-all hover:gap-3 hover:bg-[#1f1f1f]"
                 >
                   {active.title}解决方案
                   <ArrowRight className="h-4 w-4" />

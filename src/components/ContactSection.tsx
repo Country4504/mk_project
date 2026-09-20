@@ -153,8 +153,8 @@ export default function ContactSection() {
           >
             <div className="glass-card rounded-2xl p-5 lg:flex-1">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
-                  <MapPin className="w-4 h-4 text-[#00E5FF]" />
+                <div className="w-9 h-9 flex items-center justify-center">
+                  <MapPin className="w-4 h-4 text-black" />
                 </div>
                 <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">公司地址</span>
               </div>
@@ -164,8 +164,8 @@ export default function ContactSection() {
 
             <div className="glass-card rounded-2xl p-5 lg:flex-1">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
-                  <Phone className="w-4 h-4 text-[#00E5FF]" />
+                <div className="w-9 h-9 flex items-center justify-center">
+                  <Phone className="w-4 h-4 text-black" />
                 </div>
                 <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">联系电话</span>
               </div>
@@ -174,8 +174,8 @@ export default function ContactSection() {
 
             <div className="glass-card rounded-2xl p-5 lg:flex-1">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-[rgba(0,229,255,0.08)] flex items-center justify-center">
-                  <Mail className="w-4 h-4 text-[#00E5FF]" />
+                <div className="w-9 h-9 flex items-center justify-center">
+                  <Mail className="w-4 h-4 text-black" />
                 </div>
                 <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">电子邮箱</span>
               </div>
@@ -302,7 +302,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={submitted || submitting}
-                className="w-full sm:w-auto px-8 py-3.5 text-sm font-semibold bg-gradient-to-r from-[#00E5FF] to-[#2979FF] text-[#060B14] rounded-xl hover:shadow-[0_0_30px_rgba(0,229,255,0.35)] transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-60"
+                className="w-full sm:w-auto px-8 py-3.5 text-sm font-semibold bg-black text-white rounded-full hover:bg-[#1f1f1f] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60"
               >
                 {submitting ? (
                   <>提交中...</>

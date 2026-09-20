@@ -65,8 +65,8 @@ export default function AboutSection() {
                 className="glass-card rounded-2xl p-6 group"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(0,229,255,0.08)] flex items-center justify-center shrink-0 group-hover:bg-[rgba(0,229,255,0.15)] transition-colors duration-300">
-                    <Icon className="w-5 h-5 text-[#00E5FF]" />
+                  <div className="w-11 h-11 flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-black" />
                   </div>
                   <div>
                     <h3 className="text-base font-semibold text-[#E8EDF5] mb-2">{item.title}</h3>
