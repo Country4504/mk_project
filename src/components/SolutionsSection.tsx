@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Cloud,
   Database,
@@ -11,6 +11,7 @@ import {
   Settings,
   Smartphone,
   ArrowRight,
+  ArrowLeft,
 } from 'lucide-react';
 
 const solutions = [
@@ -81,6 +82,7 @@ const solutions = [
 
 export default function SolutionsSection() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const touchStartX = useRef<number | null>(null);
   const active = solutions[activeIdx];
   const ActiveIcon = active.icon;
 
@@ -115,7 +117,7 @@ export default function SolutionsSection() {
         {/* Interactive Matrix */}
         <div className="grid items-stretch lg:grid-cols-12 gap-6">
           {/* Left: selector tabs */}
-          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-3 lg:flex lg:h-full lg:flex-col lg:justify-between gap-2 pb-2 lg:pb-0">
+          <div className="hidden lg:col-span-4 lg:flex lg:h-full lg:flex-col lg:justify-between gap-2 pb-2 lg:pb-0">
             {solutions.map((sol, i) => {
               const Icon = sol.icon;
               const isActive = i === activeIdx;
@@ -154,13 +156,42 @@ export default function SolutionsSection() {
           </div>
 
           {/* Right: detail panel */}
-          <div className="lg:col-span-8 h-full">
-            <div className="h-full">
+          <div
+            className="lg:col-span-8 h-full"
+            onTouchStart={(event) => { touchStartX.current = event.touches[0]?.clientX ?? null; }}
+            onTouchEnd={(event) => {
+              if (touchStartX.current === null) return;
+              const startX = touchStartX.current;
+              const endX = event.changedTouches[0]?.clientX;
+              touchStartX.current = null;
+              if (endX === undefined) return;
+              const deltaX = endX - startX;
+              if (Math.abs(deltaX) < 45) return;
+              setActiveIdx((current) => (deltaX < 0 ? (current + 1) % solutions.length : (current - 1 + solutions.length) % solutions.length));
+            }}
+          >
+            <div className="mb-3 flex items-center justify-between px-1 lg:hidden">
+              <span className="font-mono text-xs tracking-[0.18em] text-[#17324A]">
+                SOLUTION {String(activeIdx + 1).padStart(2, '0')} / {String(solutions.length).padStart(2, '0')}
+              </span>
+              <div className="flex items-center gap-1.5" aria-label={`第 ${activeIdx + 1} 个，共 ${solutions.length} 个解决方案`}>
+                {solutions.map((solution, i) => (
+                  <button
+                    key={solution.id}
+                    type="button"
+                    aria-label={`切换到第 ${i + 1} 个解决方案`}
+                    onClick={() => setActiveIdx(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === activeIdx ? 'w-6 bg-black' : 'w-1.5 bg-[#AAB8CC]'}`}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="relative h-full">
               <motion.div
                 key={activeIdx}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                className="glass-card rounded-2xl p-6 lg:p-8 h-full relative overflow-hidden"
+                className="glass-card min-h-[520px] rounded-2xl p-6 lg:min-h-[560px] lg:p-8 h-full relative overflow-hidden"
               >
                 {/* Scan line */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -179,7 +210,9 @@ export default function SolutionsSection() {
                 </div>
 
                 {/* Description */}
-                <p className="text-[14px] text-[#7B8BA6] leading-relaxed mb-6">{active.desc}</p>
+                <div className="mb-6 h-[84px] overflow-hidden">
+                  <p className="text-[14px] text-[#7B8BA6] leading-relaxed">{active.desc}</p>
+                </div>
 
                 {/* Scenarios */}
                 <div className="mb-6">
@@ -219,6 +252,24 @@ export default function SolutionsSection() {
                   </svg>
                 </div>
               </motion.div>
+              <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-10 flex items-center justify-between lg:hidden">
+                <button
+                  type="button"
+                  aria-label="上一个解决方案"
+                  onClick={() => setActiveIdx((current) => (current - 1 + solutions.length) % solutions.length)}
+                  className="pointer-events-auto -ml-4 flex h-9 w-9 items-center justify-center rounded-full border border-black bg-white text-black shadow-sm transition-colors hover:bg-black hover:text-white"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="下一个解决方案"
+                  onClick={() => setActiveIdx((current) => (current + 1) % solutions.length)}
+                  className="pointer-events-auto -mr-4 flex h-9 w-9 items-center justify-center rounded-full border border-black bg-white text-black shadow-sm transition-colors hover:bg-black hover:text-white"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
