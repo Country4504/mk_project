@@ -12,6 +12,7 @@ __pycache__/
 *.egg-info/
 /.env
 .env
+/phaeray-contact-api/
 .cozeproj/reduction
 
 # JS/TS bundlers & build outputs
