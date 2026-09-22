@@ -278,6 +278,31 @@
 
 .nav-at-top a,
 .nav-at-top svg {
+  color: #000000 !important;
+}
+
+.nav-at-top-light a,
+.nav-at-top-light svg {
+  color: #ffffff !important;
+}
+
+.solution-core-value h2,
+.solution-core-value p {
+  color: #ffffff !important;
+}
+
+.nav-at-top-light .nav-dropdown-item,
+.nav-at-top .nav-dropdown-item {
+  color: #000000 !important;
+}
+
+.nav-at-top-light .nav-dropdown-item:hover,
+.nav-at-top .nav-dropdown-item:hover {
+  color: #00e5ff !important;
+}
+
+.nav-at-top .nav-consult-button,
+.nav-at-top-light .nav-consult-button {
   color: #ffffff !important;
 }
 

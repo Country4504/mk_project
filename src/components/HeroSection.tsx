@@ -199,7 +199,7 @@ export default function HeroSection() {
         >
           <span className="text-[#E8EDF5]">构建企业</span>
           <br />
-          <span className="gradient-text">信息安全防线</span>
+          <span className="text-[#00A8C6]">信息安全防线</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -221,14 +221,14 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
-            <Button asChild className="rounded-full bg-white text-black hover:bg-gray-100 hover:text-black">
+            <Button asChild className="h-auto rounded-full bg-white px-7 py-3.5 text-sm font-semibold leading-5 text-black hover:bg-gray-100 hover:text-black">
               <a href="/solutions">解决方案</a>
             </Button>
           </div>
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className="px-7 py-3.5 text-sm font-semibold bg-black text-white rounded-full hover:bg-[#1f1f1f] transition-all duration-300"
+            className="h-auto px-7 py-3.5 text-sm font-semibold leading-5 bg-black text-white rounded-full hover:bg-[#1f1f1f] transition-all duration-300"
           >
             联系安全专家
           </a>

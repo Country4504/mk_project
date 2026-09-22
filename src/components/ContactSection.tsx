@@ -169,7 +169,7 @@ export default function ContactSection() {
                 </div>
                 <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">联系电话</span>
               </div>
-              <p className="text-[14px] text-[#7B8BA6]">18665355986</p>
+              <p className="text-[14px] text-[#E8EDF5]">18665355986</p>
             </div>
 
             <div className="glass-card rounded-2xl p-5 lg:flex-1">
@@ -179,7 +179,7 @@ export default function ContactSection() {
                 </div>
                 <span className="cn-ui-label text-[12px] text-[#7B8BA6] tracking-wide">电子邮箱</span>
               </div>
-              <p className="text-[14px] text-[#7B8BA6]">ganqihui@phaeray.com</p>
+              <p className="text-[14px] text-[#E8EDF5]">ganqihui@phaeray.com</p>
             </div>
 
             <div className="glass-card rounded-2xl p-5 lg:flex-1">
@@ -207,7 +207,7 @@ export default function ContactSection() {
               <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-px w-px opacity-0" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
+                  <label className="contact-form-label block text-[13px] text-[#E8EDF5] tracking-wide mb-2">
                     公司名称 *
                   </label>
                   <input
@@ -224,7 +224,7 @@ export default function ContactSection() {
                   {fieldErrors.company && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.company}</p>}
                 </div>
                 <div>
-                  <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
+                  <label className="contact-form-label block text-[13px] text-[#E8EDF5] tracking-wide mb-2">
                     联系人 *
                   </label>
                   <input
@@ -241,7 +241,7 @@ export default function ContactSection() {
                   {fieldErrors.contact && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.contact}</p>}
                 </div>
                 <div>
-                  <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
+                  <label className="contact-form-label block text-[13px] text-[#E8EDF5] tracking-wide mb-2">
                     联系电话 *
                   </label>
                   <input
@@ -258,7 +258,7 @@ export default function ContactSection() {
                   {fieldErrors.phone && <p className="mt-1 text-xs text-[#FF8A80]">{fieldErrors.phone}</p>}
                 </div>
                 <div>
-                  <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
+                  <label className="contact-form-label block text-[13px] text-[#E8EDF5] tracking-wide mb-2">
                     电子邮箱
                   </label>
                   <input
@@ -277,7 +277,7 @@ export default function ContactSection() {
               <div ref={turnstileRef} className="mb-5 min-h-[65px]" aria-label="安全验证" />
 
               <div className="mb-5">
-                <label className="contact-form-label block text-[13px] text-[#AAB8CC] tracking-wide mb-2">
+                <label className="contact-form-label block text-[13px] text-[#E8EDF5] tracking-wide mb-2">
                   安全需求
                 </label>
                 <textarea

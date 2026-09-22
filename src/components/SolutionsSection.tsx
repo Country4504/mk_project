@@ -236,8 +236,7 @@ export default function SolutionsSection() {
                 </div>
 
                 <a
-                  href={`/solutions#${active.id}`}
-                  onClick={(e) => { e.preventDefault(); window.location.href = `/solutions#${active.id}`; }}
+                  href={`/solutions/${active.id}`}
                   className="mt-7 inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white transition-all hover:gap-3 hover:bg-[#1f1f1f]"
                 >
                   {active.title}解决方案
