@@ -59,6 +59,7 @@ const capabilities = [
 function AnimatedPanel({ children, delay }: { children: React.ReactNode; delay: number }) {
   return (
     <motion.div
+      className="h-full"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -114,7 +115,7 @@ export default function CapabilitiesSection() {
             return (
               <AnimatedPanel key={i} delay={i * 0.08}>
                 <div
-                  className="capability-card w-full bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-all duration-500 cursor-default"
+                  className="capability-card w-full h-full min-h-[260px] bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-all duration-500 cursor-default"
                   onMouseEnter={() => setActiveIdx(i)}
                 >
                   <div className="capability-corner w-24 h-24 rounded-full absolute -right-5 -top-7">

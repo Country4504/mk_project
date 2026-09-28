@@ -3,15 +3,18 @@
 import { motion } from 'framer-motion';
 
 const partners = [
-  { name: '天空卫士', logo: '北京天空卫士网络安全技术有限公司.png', url: 'http://www.skyguard.cn/' },
   { name: '安恒信息', logo: '杭州安恒信息技术股份有限公司.png', url: 'https://www.dbappsecurity.com.cn' },
+  { name: '亿格云', logo: '杭州亿格云科技有限公司.svg', url: 'https://www.eaglecloud.com/' },
   { name: '盈高科技', logo: '杭州盈高科技有限公司.png', url: 'https://www.infogo.com.cn' },
   { name: '鸿翼软件', logo: '上海鸿翼软件技术股份有限公司.png', url: 'https://www.macrowing.com' },
   { name: '派拉软件', logo: '上海派拉软件股份有限公司.png', url: 'https://www.paraview.cn' },
   { name: '深信服', logo: '深信服科技股份有限公司.png', url: 'https://www.sangfor.com.cn' },
+  { name: '深信达', logo: '苏州深信达信息技术有限公司.svg', url: 'https://www.shenxinda.com/' },
+  { name: '360', logo: '三六零安全科技股份有限公司.svg', url: 'https://360.net/' },
+  { name: '鼎甲科技', logo: '广州鼎甲计算机科技有限公司.svg', url: 'https://www.scutech.com/' },
+  { name: '山石网科', logo: '山石网科通信技术股份有限公司.svg', url: 'https://www.hillstonenet.com.cn/' },
   { name: '联软科技', logo: '深圳市联软科技股份有限公司.png', url: 'https://www.leagsoft.com' },
   { name: '杉岩数据', logo: '深圳市杉岩数据技术有限公司.png', url: 'https://www.szsandstone.com' },
-  { name: '思睿嘉得', logo: '思睿嘉得（北京）信息技术有限公司.png', url: 'https://www.cirrusgate.cn' },
   { name: '亚信科技', logo: '亚信科技（成都）有限公司.png', url: 'https://www.asiainfo-sec.com' },
 ];
 
@@ -71,7 +74,7 @@ export default function PartnersSection() {
                     </div>
                     <div className="partner-card__description">
                       <img src={`/Partners/${partner.logo}`} alt={partner.name} />
-                      <span>{partner.logo.replace(/\.png$/i, '')}</span>
+                      <span>{partner.name}</span>
                     </div>
                   </div>
                 </div>
