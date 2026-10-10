@@ -81,11 +81,17 @@ export default function CasesSection() {
               Success Stories
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#E8EDF5] mb-4">
-            成功案例
-          </h2>
+          <div className="mb-4 flex flex-wrap items-center gap-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#E8EDF5]">
+              成功案例
+            </h2>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#00E5FF]/25 bg-[#00E5FF]/5 px-3 py-1.5 text-xs font-medium text-[#00E5FF]/80">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#00E5FF]" aria-hidden="true" />
+              案例持续更新中……
+            </span>
+          </div>
           <p className="max-w-xl text-[#7B8BA6] text-[15px]">
-            覆盖金融、政务、医疗、教育、制造、电商等多个行业
+            覆盖芯片半导体、新能源、医疗器械、工业制造等多个行业
           </p>
         </motion.div>
 
@@ -95,25 +101,16 @@ export default function CasesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mb-12 lg:mb-16 rounded-2xl border border-[rgba(0,229,255,0.12)] bg-[rgba(16,32,57,0.55)] p-4 sm:p-6 lg:p-8"
+          className="mb-12 lg:mb-16"
         >
-          <div className="flex items-center justify-between gap-4 mb-5">
-            <div>
-              <div className="text-[10px] font-mono tracking-[0.2em] text-[#00E5FF]/65 uppercase">Trusted By</div>
-              <h3 className="mt-2 text-lg sm:text-xl font-semibold text-[#E8EDF5]">服务客户</h3>
-            </div>
-            <div className="hidden sm:block h-px flex-1 max-w-xs bg-gradient-to-r from-[#00E5FF]/30 to-transparent" />
-          </div>
-          <div className="overflow-hidden rounded-xl bg-white/95 px-3 py-4 sm:px-6 sm:py-5">
-            <Image
-              src="/成功案例Logo墙.png"
-              alt="辉锐信息成功案例客户 Logo 墙"
-              width={1836}
-              height={926}
-              className="h-auto w-full object-contain"
-              priority={false}
-            />
-          </div>
+          <Image
+            src="/Logos%20Frame(1).svg"
+            alt="成功案例客户 Logo 墙"
+            width={792}
+            height={477}
+            className="mx-auto block h-auto w-full max-w-[1100px] object-contain"
+            priority={false}
+          />
         </motion.div>
 
         {/* Industry case introductions are intentionally hidden. */}
