@@ -1,0 +1,18 @@
+FROM node:20-alpine AS build
+
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
+
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
+COPY . .
+ARG NEXT_PUBLIC_CONTACT_API_URL=https://replace-with-your-worker-domain
+ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY=replace-with-turnstile-site-key
+ENV NEXT_PUBLIC_CONTACT_API_URL=$NEXT_PUBLIC_CONTACT_API_URL \
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY=$NEXT_PUBLIC_TURNSTILE_SITE_KEY
+RUN pnpm build
+
+FROM nginx:1.27-alpine AS runtime
+COPY --from=build /app/out /usr/share/nginx/html
+EXPOSE 80
