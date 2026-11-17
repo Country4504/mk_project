@@ -1,8 +1,9 @@
 FROM node:20-alpine AS build
 
 WORKDIR /app
-RUN apk add --no-cache bash \
-    && corepack enable \
+RUN apk add --no-cache bash
+
+RUN corepack enable \
     && corepack prepare pnpm@9.0.0 --activate
 
 COPY package.json pnpm-lock.yaml ./
