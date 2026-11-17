@@ -1,7 +1,8 @@
 FROM node:20-alpine AS build
 
 WORKDIR /app
-RUN apk add --no-cache bash
+RUN sed -i 's|https://dl-cdn.alpinelinux.org/alpine|https://mirrors.aliyun.com/alpine|g' /etc/apk/repositories \
+    && apk add --no-cache bash
 
 RUN corepack enable \
     && corepack prepare pnpm@9.0.0 --activate
