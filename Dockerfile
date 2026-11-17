@@ -8,7 +8,8 @@ RUN corepack enable \
     && corepack prepare pnpm@9.0.0 --activate
 
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm-store,target=/root/.local/share/pnpm/store \
+    pnpm install --frozen-lockfile --registry=https://registry.npmmirror.com
 
 COPY . .
 ARG NEXT_PUBLIC_CONTACT_API_URL=https://replace-with-your-worker-domain
