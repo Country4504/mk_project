@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
 import { solutions } from '@/lib/solutions';
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return solutions.map((solution) => ({ slug: solution.id }));
 }
